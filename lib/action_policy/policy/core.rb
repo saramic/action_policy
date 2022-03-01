@@ -11,7 +11,7 @@ unless "".respond_to?(:underscore)
 end
 
 module ActionPolicy
-  using RubyNext
+  # using RubyNext
 
   # Raised when `resolve_rule` failed to find an approriate
   # policy rule method for the activity
@@ -105,7 +105,9 @@ module ActionPolicy
       # This method performs the rule call.
       # Override or extend it to provide custom functionality
       # (such as caching, pre checks, etc.)
-      def __apply__(rule) = public_send(rule)
+      def __apply__(rule)
+        public_send(rule)
+      end
 
       # Wrap code that could modify result
       # to prevent the current result modification
@@ -133,7 +135,9 @@ module ActionPolicy
       end
 
       # An alias for readability purposes
-      def check?(*args, **hargs) = allowed_to?(*args, **hargs)
+      def check?(*args, **hargs)
+        allowed_to?(*args, **hargs)
+      end
 
       # Returns a rule name (policy method name) for activity.
       #
@@ -149,7 +153,9 @@ module ActionPolicy
       # Return annotated source code for the rule
       # NOTE: require "method_source" and "unparser" gems to be installed.
       # Otherwise returns empty string.
-      def inspect_rule(rule) = PrettyPrint.print_method(self, rule)
+      def inspect_rule(rule)
+        PrettyPrint.print_method(self, rule)
+      end
 
       # Helper for printing the annotated rule source.
       # Useful for debugging: type `pp :show?` within the context of the policy

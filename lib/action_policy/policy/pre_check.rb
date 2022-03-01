@@ -52,7 +52,9 @@ module ActionPolicy
           filter.call(rule)
         end
 
-        def call(policy) = policy.send(name)
+        def call(policy)
+          policy.send(name)
+        end
 
         def skip!(except: nil, only: nil)
           if !except.nil? && !only.nil?

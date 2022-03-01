@@ -13,7 +13,7 @@ module ActionPolicy
 
         policy_class = with || ::ActionPolicy.lookup(
           record,
-          namespace:, context:, allow_nil:, default:, strict_namespace:
+          namespace: namespace, context: context, allow_nil: allow_nil, default: default, strict_namespace: strict_namespace
         )
         policy_class&.new(record, **context)
       end

@@ -75,7 +75,9 @@ module ActionPolicy
         raise "This matcher doesn't support negation"
       end
 
-      def supports_block_expectations?() = true
+      def supports_block_expectations?()
+        true
+      end
 
       def failure_message
         "expected a scoping named :#{name} for type :#{type} " \

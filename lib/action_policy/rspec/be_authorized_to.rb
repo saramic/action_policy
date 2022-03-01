@@ -52,7 +52,9 @@ module ActionPolicy
         raise "This matcher doesn't support negation"
       end
 
-      def supports_block_expectations?() = true
+      def supports_block_expectations?()
+        true
+      end
 
       def failure_message
         "expected #{formatted_record} " \
@@ -75,7 +77,9 @@ module ActionPolicy
         end.join("\n")
       end
 
-      def formatted_record(record = target) = ::RSpec::Support::ObjectFormatter.format(record)
+      def formatted_record(record = target)
+        ::RSpec::Support::ObjectFormatter.format(record)
+      end
     end
   end
 end

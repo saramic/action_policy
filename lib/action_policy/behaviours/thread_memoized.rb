@@ -7,7 +7,9 @@ module ActionPolicy
     class << self
       attr_writer :enabled
 
-      def enabled?() = @enabled == true
+      def enabled?()
+        @enabled == true
+      end
 
       def fetch(key)
         return yield unless enabled?

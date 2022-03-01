@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module ActionPolicy
-  using RubyNext
+  # using RubyNext
 
   module Policy
     # Failures reasons store
@@ -25,11 +25,17 @@ module ActionPolicy
 
       # Return Hash of the form:
       #   { policy_identifier => [rules, ...] }
-      def details() = reasons.transform_keys(&:identifier)
+      def details()
+        reasons.transform_keys(&:identifier)
+      end
 
-      def empty?() = reasons.empty?
+      def empty?()
+        reasons.empty?
+      end
 
-      def present?() = !empty?
+      def present?()
+        !empty?
+      end
 
       def merge(other)
         other.reasons.each do |policy_class, rules|

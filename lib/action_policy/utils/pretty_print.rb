@@ -16,7 +16,7 @@ ensure
 end
 
 module ActionPolicy
-  using RubyNext
+  # using RubyNext
 
   # Takes the object and a method name,
   # and returns the "annotated" source code for the method:
@@ -129,19 +129,26 @@ module ActionPolicy
       attr_accessor :ignore_expressions
 
       if defined?(::Unparser) && defined?(::MethodSource)
-        def available?() = true
+        def available?()
+          true
+        end
 
         def print_method(object, method_name)
-          ast = object.method(method_name).source.then(&Unparser.:parse)
+          # ast = object.method(method_name).source.then(&Unparser.:parse)
+          ast = object.method(method_name).source.then{Unparser.parse(_1)}
           # outer node is a method definition itself
           body = ast.children[2]
 
           Visitor.new(object).collect(body)
         end
       else
-        def available?() = false
+        def available?()
+          false
+        end
 
-        def print_method(_, _) = ""
+        def print_method(_, _)
+          ""
+        end
       end
 
       def colorize(val)

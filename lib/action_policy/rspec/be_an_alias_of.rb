@@ -46,7 +46,9 @@ module ActionPolicy
         policy.resolve_rule(actual) != rule
       end
 
-      def supports_block_expectations?() = false
+      def supports_block_expectations?()
+        false
+      end
 
       def failure_message
         "expected #{policy}##{actual} " \

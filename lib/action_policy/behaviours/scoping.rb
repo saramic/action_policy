@@ -19,7 +19,7 @@ module ActionPolicy
         type ||= authorization_scope_type_for(policy, target)
         name = as
 
-        Authorizer.scopify(target, policy, type:, name:, scope_options:)
+        Authorizer.scopify(target, policy, type: type, name: name, scope_options: scope_options)
       end
 
       # For backward compatibility

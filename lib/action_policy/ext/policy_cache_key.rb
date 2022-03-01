@@ -27,45 +27,65 @@ module ActionPolicy
       end
 
       refine NilClass do
-        def _policy_cache_key(*) = ""
+        def _policy_cache_key(*)
+          ""
+        end
       end
 
       refine TrueClass do
-        def _policy_cache_key(*) = "t"
+        def _policy_cache_key(*)
+          "t"
+        end
       end
 
       refine FalseClass do
-        def _policy_cache_key(*) = "f"
+        def _policy_cache_key(*)
+          "f"
+        end
       end
 
       refine String do
-        def _policy_cache_key(*) = self
+        def _policy_cache_key(*)
+          self
+        end
       end
 
       refine Symbol do
-        def _policy_cache_key(*) = to_s
+        def _policy_cache_key(*)
+          to_s
+        end
       end
 
       if RUBY_PLATFORM.match?(/java/i)
         refine Integer do
-          def _policy_cache_key(*) = to_s
+          def _policy_cache_key(*)
+            to_s
+          end
         end
 
         refine Float do
-          def _policy_cache_key(*) = to_s
+          def _policy_cache_key(*)
+            to_s
+          end
         end
       else
         refine Numeric do
-          def _policy_cache_key(*) = to_s
+          def _policy_cache_key(*)
+            to_s
+          end
         end
       end
 
       refine Time do
-        def _policy_cache_key(*) = to_s
+        def _policy_cache_key(*)
+          to_s
+        end
       end
 
       refine Module do
-        def _policy_cache_key(*) = name
+        def _policy_cache_key(*)
+          name
+        end
       end
     end
   end

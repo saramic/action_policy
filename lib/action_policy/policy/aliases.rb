@@ -54,9 +54,13 @@ module ActionPolicy
           end
         end
 
-        def lookup_alias(rule) = rules_aliases[rule]
+        def lookup_alias(rule)
+          rules_aliases[rule]
+        end
 
-        def lookup_default_rule() = rules_aliases[DEFAULT]
+        def lookup_default_rule()
+          rules_aliases[DEFAULT]
+        end
 
         def rules_aliases
           return @rules_aliases if instance_variable_defined?(:@rules_aliases)

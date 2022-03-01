@@ -3,7 +3,7 @@
 require "action_policy/version"
 
 module ActionPolicy # :nodoc:
-  using RubyNext
+  # using RubyNext
 
   # By default cache namespace (or prefix) contains major and minor version of the gem
   CACHE_NAMESPACE = "acp:#{ActionPolicy::VERSION.split(".").take(2).join(".")}"
@@ -23,7 +23,9 @@ module ActionPolicy # :nodoc:
         end
       end
 
-      def cache_namespace() = ActionPolicy::CACHE_NAMESPACE
+      def cache_namespace()
+        ActionPolicy::CACHE_NAMESPACE
+      end
 
       def cache_key(*parts)
         [

@@ -19,15 +19,21 @@ module ActionPolicy
         @value = value
       end
 
-      def success?() = @value == true
+      def success?()
+        @value == true
+      end
 
-      def fail?() = @value == false
+      def fail?()
+        @value == false
+      end
 
       def cached!
         @cached = true
       end
 
-      def cached?() = @cached == true
+      def cached?()
+        @cached == true
+      end
 
       def inspect
         "<#{policy}##{rule}: #{@value}>"
